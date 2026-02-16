@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Church of I-ration — Unity, culture, wellness, and positive living in Cincinnati, Ohio." />
+  <title>Church of I-ration | Cincinnati, OH</title>
+
+  <style>
+    :root{
+      --bg:#0b0f12;
+      --card:#111820;
+      --text:#e9eef3;
+      --muted:#b7c4cf;
+      --line:rgba(255,255,255,.12);
+      --accent:#f5c542; /* warm gold */
+      --accent2:#2ecc71; /* green */
+      --accent3:#e74c3c; /* red */
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(46,204,113,.18), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(245,197,66,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(231,76,60,.14), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px; }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,18,.65);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .wrap{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 14px 22px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+      font-weight: 750;
+      letter-spacing: .2px;
+    }
+    .mark{
+      width: 34px; height: 34px; border-radius: 10px;
+      background:
+        linear-gradient(135deg, var(--accent3), var(--accent2) 55%, var(--accent));
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    nav{
+      display:flex; gap: 14px; flex-wrap: wrap;
+      align-items:center;
+    }
+    nav a{
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 54px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      background: rgba(17,24,32,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{ padding: 28px; }
+    .kicker{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(255,255,255,.03);
+    }
+    .dots{
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(46,204,113,.16);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.7px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 62ch;
+    }
+    .ctaRow{
+      margin-top: 18px;
+      display:flex; gap: 12px; flex-wrap: wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-weight: 650;
+    }
+    .btn:hover{ background: rgba(255,255,255,.07); }
+    .btn.primary{
+      border-color: rgba(245,197,66,.35);
+      background: linear-gradient(135deg, rgba(245,197,66,.18), rgba(46,204,113,.14));
+    }
+    .pillRow{
+      margin-top: 16px;
+      display:flex; gap: 10px; flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Side info */
+    .heroSide{
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sideBlock{
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .sideTitle{ font-weight: 750; margin-bottom: 6px; }
+    .sideText{ color: var(--muted); margin:0; }
+    .rgGold{
+      display:flex; gap: 8px; align-items:center; margin-top: 10px;
+    }
+    .swatch{ width: 12px; height: 12px; border-radius: 50%; }
+    .swatch.r{ background: var(--accent3); }
+    .swatch.g{ background: var(--accent2); }
+    .swatch.y{ background: var(--accent); }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .sectionTitle{
+      display:flex; align-items:end; justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    h2{ margin:0; font-size: 24px; letter-spacing: -0.3px; }
+    .hint{ color: var(--muted); font-size: 14px; }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+    .feature{ padding: 18px; }
+    .feature h3{ margin: 0 0 6px; font-size: 18px; }
+    .feature p{ margin: 0; color: var(--muted); }
+
+    /* Quote */
+    .quote{
+      padding: 20px;
+      border-left: 4px solid rgba(245,197,66,.55);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+    .quote p{ margin: 0; color: var(--text); font-size: 18px; }
+    .quote small{ display:block; margin-top: 8px; color: var(--muted); }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .contactGrid{ grid-template-columns: 1fr; }
+    }
+    .contactCard{ padding: 18px; }
+    .label{ color: var(--muted); font-size: 13px; margin-bottom: 4px; }
+    .value{ font-size: 16px; font-weight: 650; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+
+    footer{
+      padding: 30px 0 48px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          Church of I-ration<br/>
+          <span style="color:var(--muted); font-weight:600; font-size:13px;">Cincinnati, Ohio</span>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#involved">Get Involved</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero" id="top">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <div class="kicker"><span class="dots" aria-hidden="true"></span> Unity • Culture • Wellness • Positive Living</div>
+          <h1>Upliftment, unity, and cultural celebration—built on love.</h1>
+          <p class="sub">
+            The Church of I-ration is a spiritual community dedicated to bringing people together through reggae music,
+            positive energy, and healthy living. We gather to honor heritage, strengthen spirit, and share love with all people.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="#involved">Get involved</a>
+            <a class="btn" href="mailto:Irationchurch@yahoo.com">Email us</a>
+          </div>
+
+          <div class="pillRow">
+            <span class="pill">Community gatherings</span>
+            <span class="pill">Wellness & healthy living</span>
+            <span class="pill">Culture & creative expression</span>
+          </div>
+        </div>
+
+        <aside class="card heroSide">
+          <div class="sideBlock">
+            <div class="sideTitle">Our focus</div>
+            <p class="sideText">
+              Inclusive programming that strengthens individuals, celebrates cultural heritage, and builds connection across our city.
+            </p>
+            <div class="rgGold" aria-label="Red, green, and gold">
+              <span class="swatch r"></span><span class="swatch g"></span><span class="swatch y"></span>
+              <span style="color:var(--muted); font-size:13px;">Red • Green • Gold</span>
+            </div>
+          </div>
+
+          <div class="sideBlock">
+            <div class="sideTitle">Location</div>
+            <p class="sideText">
+              5417 Warren Ave<br/>Cincinnati, OH 45212
+            </p>
+          </div>
+
+          <div class="sideBlock">
+            <div class="sideTitle">Want to partner?</div>
+            <p class="sideText">
+              We welcome community partners, volunteers, and supporters who want to help uplift Cincinnati through culture and wellness.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="sectionTitle">
+        <h2>About</h2>
+        <div class="hint">Who we are and why we exist</div>
+      </div>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h3>Our Mission</h3>
+          <p>
+            A spiritual community dedicated to upliftment, unity, and cultural celebration through reggae music,
+            positive energy, and healthy living.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <h3>Our Vision</h3>
+          <p>
+            A thriving community where culture, wellness, and spiritual awareness empower people to live healthier,
+            more connected, and more purposeful lives.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <h3>Our Values</h3>
+          <p>
+            Unity • Cultural pride • Wellness • Love & respect • Community service • Positive energy
+          </p>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="quote">
+        <p>
+          “We’re building a safe, uplifting space where people can connect, grow, celebrate culture, and support one another.”
+        </p>
+        <small>— Church of I-ration</small>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="sectionTitle">
+        <h2>Programs & Gatherings</h2>
+        <div class="hint">What we do (and what we’re growing)</div>
+      </div>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h3>Cultural Gatherings</h3>
+          <p>Music-centered events, community fellowship, and celebrations that honor heritage and bring people together.</p>
+        </div>
+
+        <div class="card feature">
+          <h3>Wellness & Healthy Living</h3>
+          <p>Education and activities that support healthier lifestyles, stress reduction, and holistic well-being.</p>
+        </div>
+
+        <div class="card feature">
+          <h3>Youth & Creative Expression</h3>
+          <p>Mentorship, learning opportunities, and creative outlets that inspire leadership, confidence, and growth.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="involved">
+      <div class="sectionTitle">
+        <h2>Get Involved</h2>
+        <div class="hint">Support the mission</div>
+      </div>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h3>Attend</h3>
+          <p>Come to a gathering, bring a friend, and connect with the community.</p>
+        </div>
+
+        <div class="card feature">
+          <h3>Volunteer</h3>
+          <p>Help with events, outreach, youth support, wellness activities, and behind-the-scenes operations.</p>
+        </div>
+
+        <div class="card feature">
+          <h3>Donate</h3>
+          <p>
+            Want to support our growth? Add your donation link here when ready.
+            <span style="display:block; margin-top:8px; color:var(--muted); font-size:13px;">
+              (Tip: Cash App / Venmo / PayPal / Givebutter all work.)
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionTitle">
+        <h2>Contact</h2>
+        <div class="hint">Let’s build together</div>
+      </div>
+
+      <div class="contactGrid">
+        <div class="card contactCard">
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:Irationchurch@yahoo.com">Irationchurch@yahoo.com</a></div>
+          <div style="height:10px"></div>
+          <div class="label">Mailing Address</div>
+          <div class="value">5417 Warren Ave, Cincinnati, OH 45212</div>
+        </div>
+
+        <div class="card contactCard">
+          <div class="label">Quick note</div>
+          <div class="value" style="font-weight:600; color:var(--muted);">
+            For partnerships, volunteering, or community support, email us with your name and what you’d like to collaborate on.
+          </div>
+          <div style="height:14px"></div>
+          <a class="btn primary" href="mailto:Irationchurch@yahoo.com?subject=Church%20of%20I-ration%20-%20Let%E2%80%99s%20Connect">Send an email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0;">
+        © <span id="y"></span> Church of I-ration • Cincinnati, Ohio • Unity • Culture • Wellness • Positive Living
+        <div style="height:10px"></div>
+        <span class="mono">Tip:</span> When you get your EIN, we can add it to a “Nonprofit info” section for grants and donors.
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+  </html>
